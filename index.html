@@ -15,7 +15,7 @@
 	<!-- End of Fonts -->
 </head>
 <body>
-	<!-- App Wrapper -->
+
 	<main class="app">
 		<!-- Greeting -->
 		<section class="greeting">
@@ -35,11 +35,26 @@
 			<h3>WHAT DO YOU NEED TO DO?</h3>
 			<form id="new-todo-form">
 				<h4>ADD TO YOUR LIST:</h4>
-				<input 
+				<div class="row">
+				<div class="column">
+					<input 
 					type="text" 
 					placeholder="e.g. Get some milk"
 					name="content"
-					id="content" />
+					id="content" 
+					/>
+				</div>
+				<div class="column">
+					<input type="date" id='datepicker'/>
+				</div>
+			
+				<div class="column">
+				<input type="submit" value="Add todo" id="addtodolist"/>
+			</div>
+		</div>
+				
+				
+					
 					
 				<h4>PICK A CATEGORY:</h4>
 				<div class="options">
@@ -55,22 +70,20 @@
 					</label>
 				</div>
 				
-				<input type="submit" value="Add todo" />
+				
 				
 				
 
 				
 			</form>
 		</section>
-		<!-- End of New Todo -->
+
 
 		
 
 	</main>
-	<!-- End of App Wrapper -->
 
-	<!-- JS Import -->
 	<script src="scripts/src.js"></script>
-	<!-- End of JS Import -->
+
 </body>
 </html>

@@ -74,7 +74,17 @@ h4 {
 	font-size: 1.5rem;
 	font-weight: 700;
 }
-
+#datepicker {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: var(--dark);
+	background-color: #FFF;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1.5rem;
+}
 .create-todo input[type="text"] {
 	display: block;
 	width: 100%;
@@ -235,3 +245,23 @@ input:checked ~ .bubble::after {
 	text-decoration: line-through;
 	color: var(--grey);
 }
+.row {
+	display: flex;
+}
+
+.column {
+	flex: 33%;
+}
+
+#content {
+	border-radius: 10px 0px 0px 10px;
+}
+
+#datepicker {
+	border-radius: 0px 0px 0px 0px;
+}
+
+#addtodolist {
+	border-radius: 0px 10px 10px 0px;
+}
+

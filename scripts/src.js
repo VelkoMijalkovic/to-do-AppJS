@@ -11,18 +11,18 @@ window.addEventListener('load', () => {
 		localStorage.setItem('username', e.target.value);
 	})
 class List {
-	constructor(content, category, done, createdAt) {
+	constructor(content, category, done, date) {
 		this.content = content;
 		this.category = category;
 		this.done = done;
-	    this.createdAt = createdAt;
+	    this.date = date;
 	}
 }
 	newTodoForm.addEventListener('submit', e => {
 		e.preventDefault();
 
-		
-		const todo = new List(e.target.elements.content.value, e.target.elements.category.value,false, new Date().toLocaleString());
+		let date = document.getElementById('datepicker').value;
+		const todo = new List(e.target.elements.content.value, e.target.elements.category.value,false, date);
 
 		todos.push(todo);
 
@@ -36,14 +36,19 @@ class List {
 
 	DisplayTodos()
 })
-
+function AlphabetSort(x, y){
+	return x.content.localeCompare(y.content)
+}
 function DisplayTodos () {
+	todos.sort(AlphabetSort);
 	const todoList = document.querySelector('#todo-list');
 	todoList.innerHTML = "";
+	console.log(todos);
 	todos.forEach(todo => {
 		const todoItem = document.createElement('div');
 		todoItem.classList.add('todo-item');
 
+		const date = document.createElement('input');
 		const label = document.createElement('label');
 		const input = document.createElement('input');
 		const span = document.createElement('span');
@@ -51,6 +56,8 @@ function DisplayTodos () {
 		const actions = document.createElement('div');
 		const edit = document.createElement('button');
 		const deleteButton = document.createElement('button');
+		
+		date.type = 'date';
 		
 		input.type = 'checkbox';
 		input.checked = todo.done;
@@ -65,13 +72,12 @@ function DisplayTodos () {
 		edit.classList.add('edit');
 		deleteButton.classList.add('delete');
 		
-
-		content.innerHTML = `<input type="text" style="width: 1200px;" value="${todo.content} ${todo.createdAt}" readonly>`;
+		content.innerHTML = `<input type="text" style="width: 1200px;" 
+		value="${todo.content}" readonly> <input type="date" value="${todo.date}" /> `;
 		
 		edit.innerHTML = 'Edit';
 		deleteButton.innerHTML = 'Delete';
 		
-
 		label.appendChild(input);
 		label.appendChild(span);
 		actions.appendChild(edit);
@@ -79,9 +85,11 @@ function DisplayTodos () {
 		todoItem.appendChild(label);
 		todoItem.appendChild(content);
 		todoItem.appendChild(actions);
+		
+
 
 		todoList.appendChild(todoItem);
-
+		
 		if (todo.done) {
 			todoItem.classList.add('done');
 		}
